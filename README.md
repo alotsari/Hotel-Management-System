@@ -14,7 +14,7 @@ This system performs the following operations:<br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*- Interpolation search.*<br />
 &nbsp;&nbsp;&nbsp;• Displays Reservations by surname search.<br />
 
-Implemented with two differect ways (data structures): <br />
+Implementation in two differect ways (data structures): <br />
 &nbsp;&nbsp;&nbsp;• Arrays <br />
 &nbsp;&nbsp;&nbsp;• AVL trees <br />
 
