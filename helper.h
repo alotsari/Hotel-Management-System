@@ -33,5 +33,4 @@ struct Avl_node{
 	struct Avl_node* right;
 };
 
-
 #endif
