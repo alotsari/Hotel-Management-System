@@ -4,6 +4,12 @@
 #include <unistd.h>
 #include "helper.h"
 #include "functions.h"
+ 
+void contact()
+{
+	printf("\ncontact no.=8429468216\nsite=trivago.com");
+        return 0;
+}	
 
 int main(int argc, char **argv){
 
@@ -19,7 +25,8 @@ int main(int argc, char **argv){
 		strcpy(filename, "data.csv");
 	} 
 
-	else {
+	else 
+	{
 		strcpy(filename, argv[1]);
     }
 
@@ -31,15 +38,17 @@ int main(int argc, char **argv){
 		printf("3. Add a Hotel.\n");
 		printf("4. Search and Display a Hotel by id.\n");
 		printf("5. Display Reservations by surname search.\n");
-		printf("6. Exit.\n");
+		printf("6. contact developer");
+		printf("7. Exit.\n");
 		printf("-> ");
 
 		scanf("%d",&c);
-		if ((c < 1) || (c > 6)) {
+		if ((c < 1) || (c > 7)) {
 			printf("Wrong choice, try again! \n\n");
 		}
 
-		else {
+		else 
+		{
 
 			switch(c){
 
@@ -93,6 +102,8 @@ int main(int argc, char **argv){
 
 					break;
 				case 6:
+					contact();
+				case 7:
 					if(fflag == 0){
 						printf("\nExit.\n\n");					
 					}
@@ -107,9 +118,10 @@ int main(int argc, char **argv){
 			}
 		}
 
-	}while(c != 6);
+	}while(c != 7);
 	
-	if(fflag == 1){
+	if(fflag == 1)
+	{
 		clear(hotels, lines, reserv_num);
 	}
 

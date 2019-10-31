@@ -103,14 +103,16 @@ void save(Hotel_t* hotels, int lines, int* reserv_num, char* filename){
 	int i, j;
 
 	fp = fopen(filename, "w+");	
-	if (fp == NULL) {
+	if (fp == NULL) 
+	{
 		perror ("open");
 		exit(1);
 	}
 
 	fprintf(fp, "%d;\n", lines);
 
-	for(i = 0; i < lines; i++){
+	for(i = 0; i < lines; i++)
+	{
 		fprintf(fp, "%d;%s;%d;%d", hotels[i].id, hotels[i].name, hotels[i].stars, hotels[i].numberOfRooms); 
 
 		for(j = 0; j < reserv_num[i]; j++){
@@ -151,7 +153,8 @@ void add(Hotel_t** hotels, int* line_num, int** numOfReserv){
 			i++;
 		}while(i < (*line_num));
 
-		if((*line_num) == i){
+		if((*line_num) == i)
+		{
 			
 			local_hotel = realloc(local_hotel, (*line_num + 1) * sizeof(Hotel_t));
 			reserv_num = realloc(reserv_num, (*line_num + 1) * sizeof(int));
@@ -177,7 +180,7 @@ void add(Hotel_t** hotels, int* line_num, int** numOfReserv){
 				
 			while(1){
 
-				printf("\nDo you want to add a reservarion? (y/n) ");
+				printf("\nDo you want to add a reservarion? (yes=y/no=n) ");
 				scanf("%s", &ans);
 				if(ans != 'y'){
 					break;
@@ -416,7 +419,8 @@ int height(Node_t* n){
 /******************* B A L A N C E *******************/
 
 
-int balance(Node_t* n){
+int balance(Node_t* n)
+{
 	if(n == NULL){
 		return 0;
 	}
@@ -448,16 +452,16 @@ Node_t* rr_rotation(Node_t* parent){
 
 
 Node_t* ll_rotation(Node_t* parent){
-	Node_t* n;
+	Node_t* p;
 
-	n = parent->left;
-	parent->left = n->right;
-	n->right = parent;
+	p = parent->left;
+	parent->left = p->right;
+	p->right = parent;
 
 	parent->height = max(height(parent->left), height(parent->right)) + 1;
-	n->height = max(height(n->left), parent->height) + 1;
+	p->height = max(height(n->left), parent->height) + 1;
 
-	return n;
+	return p;
 }
 
 
@@ -490,7 +494,8 @@ Node_t* lr_rotation(Node_t* parent){
 /******************* B A L A N C I N G *******************/
 
 
-Node_t* balancing(Node_t* n){
+Node_t* balancing(Node_t* n)
+{
 	int b_factor = balance(n);
 
 	if(b_factor > 1){
@@ -519,13 +524,15 @@ Node_t* balancing(Node_t* n){
 
 Node_t* insert(Hotel_t* hotels, Node_t* root, int i){
 
-	if(root == NULL){
+	if(root == NULL)
+	{
 		root = (Node_t*) malloc(sizeof(Node_t));
 		root->key = i;
 		root->left = NULL;
 		root->right =NULL;
 	}
-	else if(hotels[i].id < hotels[root->key].id){
+	else if(hotels[i].id < hotels[root->key].id)
+	{
 		root->left = insert(hotels, root->left, i);
 		root = balancing(root);
 	}
@@ -545,19 +552,19 @@ Node_t* insert(Hotel_t* hotels, Node_t* root, int i){
 
 void sort(Hotel_t* hotels, int lines, int* reserv_num){
 
-	int i, j, temp1;
-	Hotel_t temp2; 
+	int i, j, temp_1;
+	Hotel_t temp_2; 
 
 	for(i = 1; i < lines; i++){
 		for(j = 0; j < lines - i; j++){
 			if(hotels[j].id > hotels[j + 1].id){
-				temp1 = reserv_num[j];
+				temp_1 = reserv_num[j];
 				reserv_num[j] = reserv_num[j + 1];
-				reserv_num[j + 1] = temp1;
+				reserv_num[j + 1] = temp_1;
 
-				temp2 = hotels[j];
+				temp_2 = hotels[j];
 				hotels[j] = hotels[j + 1];
-				hotels[j + 1] = temp2;
+				hotels[j + 1] = temp_2;
 			}
 		}
 	}
